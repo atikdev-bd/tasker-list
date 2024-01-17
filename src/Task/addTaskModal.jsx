@@ -1,4 +1,28 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+import { useState } from "react";
+
 export default function AddTaskModal() {
+  const [task, setTask] = useState({
+    title: "",
+    description: "",
+    priority: "",
+    isFavorite: false,
+  });
+
+  function handleChange(e) {
+    let name = e.target.name;
+    let value = e.target.value;
+
+    if (name === "tags") {
+      value = value.split(",");
+    }
+
+    setTask({
+      ...task,
+      [name]: value,
+    });
+  }
   return (
     <>
       <div className="bg-black bg-opacity-70 h-full w-full z-10 absolute top-0 left-0"></div>
@@ -15,6 +39,8 @@ export default function AddTaskModal() {
               type="text"
               name="title"
               id="title"
+              value={task.value}
+              onChange={handleChange}
               required
             />
           </div>
@@ -26,6 +52,8 @@ export default function AddTaskModal() {
               type="text"
               name="description"
               id="description"
+              value={task.description}
+              onChange={handleChange}
               required
             ></textarea>
           </div>
@@ -38,6 +66,8 @@ export default function AddTaskModal() {
                 type="text"
                 name="tags"
                 id="tags"
+                value={task.tags}
+                onChange={handleChange}
                 required
               />
             </div>
@@ -48,6 +78,8 @@ export default function AddTaskModal() {
                 className="block w-full cursor-pointer rounded-md bg-[#2D323F] px-3 py-2.5"
                 name="priority"
                 id="priority"
+                value={task.priority}
+                onChange={handleChange}
                 required
               >
                 <option value="">Select Priority</option>
