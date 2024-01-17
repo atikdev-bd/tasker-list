@@ -6,10 +6,12 @@ import HeroSction from "./heroSection";
 function App() {
   return (
     <>
-      <div className="bg-[#191D26] font-[Inter] text-white">
+      <div>
         <Header />
-        <HeroSction />
-        <TaskBoard />
+        <div className="flex flex-col justify-center items-center">
+          <HeroSction />
+          <TaskBoard />
+        </div>
         <Footer />
       </div>
     </>
